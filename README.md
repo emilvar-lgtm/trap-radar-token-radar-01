@@ -1,10 +1,10 @@
-# rug-radar-token-radar-01
+# trap-radar-token-radar-01
 
 [![make.fun · token-radar-01](https://make.fun/badge/token-radar-01.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
-[![rank](https://make.fun/badge/token-radar-01/emilvar-lgtm/rug-radar-token-radar-01/rank.svg)](https://make.fun/bounty/token-radar-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
-[![reward](https://make.fun/badge/token-radar-01/emilvar-lgtm/rug-radar-token-radar-01/reward.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![rank](https://make.fun/badge/token-radar-01/emilvar-lgtm/trap-radar-token-radar-01/rank.svg)](https://make.fun/bounty/token-radar-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![reward](https://make.fun/badge/token-radar-01/emilvar-lgtm/trap-radar-token-radar-01/reward.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
 
-Rug Radar — a token launch radar that prices rug risk into every row. It ranks pre-token protocols by risk-adjusted implied value: a protocol whose TVL is fleeing, whose growth is a sudden spike, or whose record is opaque is worth less than the same TVL in a steady, old, multi-chain protocol. Only genuine launch candidates are ranked; wrapped, staked or bridged products of tokens that already trade are excluded, not ranked as if they were launches.
+Trap Radar — a token launch radar that prices rug risk into every row. It ranks pre-token protocols by risk-adjusted implied value: a protocol whose TVL is fleeing, whose growth is a sudden spike, or whose record is opaque is worth less than the same TVL in a steady, old, multi-chain protocol. Only genuine launch candidates are ranked; wrapped, staked or bridged products of tokens that already trade are excluded, not ranked as if they were launches.
 
 ## Run it
 

@@ -1,4 +1,4 @@
-// Rug Radar's dashboard. Reads window.RADAR (written beside dashboard/ by
+// Trap Radar's dashboard. Reads window.RADAR (written beside dashboard/ by
 // main.ts) and renders the board, the filters and one protocol's detail view.
 // No network, no framework. Hash routes: #detail=<slug> opens a protocol,
 // #filter=band:<BAND> filters to one risk band.

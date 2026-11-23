@@ -1,4 +1,4 @@
-// Rug Radar: a token launch radar that prices rug risk into every row.
+// Trap Radar: a token launch radar that prices rug risk into every row.
 //
 // The board ranks pre-token protocols by implied value, but the value is
 // risk-adjusted: a protocol whose TVL is fleeing, whose growth is a sudden
@@ -88,7 +88,7 @@ export const RUG_MODEL: RugModelConstants = {
 };
 
 /** The model's version label: the dashboard names it. */
-export const MODEL_VERSION = 'rug-radar-1';
+export const MODEL_VERSION = 'trap-radar-1';
 
 /** How many live-token protocols the Live view carries, by market cap. */
 export const LIVE_ROWS = 24;
@@ -345,7 +345,7 @@ export function buildBoard(snapshot: Snapshot, model: RugModelConstants = RUG_MO
     if (p !== undefined) chosen.set(slug, p);
   }
   // The early radar: every other rankable pre-token protocol, not just the
-  // top few — a rug radar earns its keep on the long tail, where the traps
+  // top few — a trap radar earns its keep on the long tail, where the traps
   // hide. Rankable means pre-token, not an exchange, not a versioned pool.
   for (const p of snapshot.protocols) {
     if (!chosen.has(p.slug) && isRankable(p)) chosen.set(p.slug, p);
