@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rug Radar — pre-token protocols ranked by risk-adjusted value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="pulse" aria-hidden="true"></span><div><h1>RUG RADAR</h1><p class="sub">Token launch radar with rug risk priced in</p></div></div>
+  <div class="meta"><span id="asof"></span><span id="counts"></span></div>
+</header>
+
+<section class="explain" id="explain">
+  <h2>How to read this board</h2>
+  <p>Every pre-token protocol is ranked by <strong>implied value</strong> — what its token would be worth if the protocol's record stayed as it is. The value is <strong>risk-adjusted</strong>: a rug-risk score (0–100) built from the snapshot alone discounts it. A protocol whose TVL is fleeing, whose growth is a sudden spike, or whose record is opaque is worth less than the same TVL in a steady, old, multi-chain protocol. Nothing here predicts whether or when a token is issued, and “records no token” means the record carries none — not that none exists.</p>
+  <div class="bands" id="bands"></div>
+  <p class="model-line" id="model-line"></p>
+</section>
+
+<section class="controls" aria-label="Filters">
+  <label>Search <input id="q" type="search" placeholder="protocol, category or chain" autocomplete="off"></label>
+  <label>Risk band <select id="band"><option value="">All bands</option><option>SAFE</option><option>WATCH</option><option>RISKY</option><option>RED FLAG</option></select></label>
+  <label>Category <select id="cat"><option value="">All categories</option></select></label>
+  <label>Chain <select id="chain"><option value="">All chains</option></select></label>
+  <label>Min TVL <select id="minTvl"><option value="0">Any</option><option value="50000000">$50M+</option><option value="100000000">$100M+</option><option value="1000000000">$1B+</option></select></label>
+  <label class="check"><input id="watchOnly" type="checkbox"> Watchlist only</label>
+  <label class="check"><input id="hideRed" type="checkbox"> Hide RED FLAG</label>
+  <label>Sort <select id="sort"><option value="value">Implied value</option><option value="risk">Risk score (high first)</option><option value="tvl">TVL</option><option value="growth">7d change</option><option value="age">Age (oldest first)</option></select></label>
+  <span class="shown" id="shown"></span>
+</section>
+
+<main>
+  <table id="board">
+    <thead><tr>
+      <th data-k="rank">#</th><th data-k="name">Protocol</th><th data-k="risk">Rug risk</th>
+      <th data-k="value" class="num">Implied value</th><th data-k="tvl" class="num">TVL</th>
+      <th data-k="growth" class="num">7d</th><th data-k="age" class="num">Age</th><th>Chains</th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="empty" id="empty" hidden>No protocol matches these filters. Loosen one and the board fills again.</p>
+</main>
+
+<section id="detail" class="detail" hidden></section>
+
+<section class="live">
+  <h2>Already trading — the market's own values</h2>
+  <p>These protocols already have a token, so the board never ranks them by a model. Their market caps are shown for contrast: a pre-token protocol's implied value is a claim, these are prices.</p>
+  <table id="liveTable">
+    <thead><tr><th>Protocol</th><th class="num">Market cap</th><th class="num">TVL</th><th class="num">7d</th></tr></thead>
+    <tbody id="liveRows"></tbody>
+  </table>
+</section>
+
+<section class="method">
+  <h2>The model, stated in full</h2>
+  <p id="method-text"></p>
+  <h3>Risk signals</h3>
+  <ul>
+    <li><strong>TVL flight</strong> — 7d change ≤ −25%: +35; −25 to −15%: +20; −15 to −5%: +8.</li>
+    <li><strong>Pump spike</strong> — 7d change ≥ +80%: +25; +50 to +80%: +12. Mercenary inflow inflates TVL.</li>
+    <li><strong>Opaque age</strong> — no listing date: +15. <strong>Young</strong> — under 90 days: +12; under 180: +6.</li>
+    <li><strong>One chain</strong> — single chain with ≥ $1B TVL: +15; single chain: +8. <strong>Whale venue</strong> — ≥ $5B on ≤ 2 chains: +10.</li>
+    <li><strong>No 7d data</strong> — +10. <strong>Bridge</strong> category — +10. <strong>Instant whale</strong> — over $1B TVL younger than 180 days: +20.</li>
+  </ul>
+  <p>Only genuine launch candidates are ranked: a protocol that records no token but is a wrapped, staked or bridged product of a token that already trades, an exchange's own product, a versioned pool, or in a Bridge, Liquid Staking, Liquid Restaking, Restaked BTC or CEX category is not a candidate — WBTC, Binance staked ETH and USDT0 are the textbook examples. Trust = 1 − (risk ÷ 100) × 0.6. Implied value = TVL × 0.25 × growth × maturity × trust. Growth clamps 7d change to −60…+120% at half weight; maturity rises from 0.6 to 1.0 over three years (unknown age counts as one year). Farm plans size capital down as risk rises and every plan carries an exit trigger: if 7d TVL falls more than 20% or withdrawals pause, unwind within 24 hours.</p>
+</section>
+
+<footer><p>Snapshot: DefiLlama public API, fetched once by the house. Board generated by Rug Radar model rug-radar-1 from that snapshot alone.</p></footer>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
